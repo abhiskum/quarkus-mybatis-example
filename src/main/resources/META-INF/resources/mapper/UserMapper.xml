@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+    "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.ggs.mapper.UserMapper">
+
+    <!--Field mapping for User-->
+    <resultMap id="UserResultMap" type="com.ggs.model.User">
+        <id column="id" property="id"/>
+        <id column="name" property="name"/>
+        <collection property="roles" resultMap="RoleResultMap" columnPrefix="role_"/>
+    </resultMap>
+
+    <resultMap id="RoleResultMap" type="com.ggs.model.Role">
+        <id column="id" property="id"/>
+        <id column="name" property="name"/>
+    </resultMap>
+
+    <!-- SQL queries for user -->
+
+    <!-- Query to fetch All Users-->
+ <!--  <select id="findAll" resultMap="UserResultMap">
+        SELECT id, name, role.id role_id, role.name role_name
+        from USER user left outer join USER_ROLE user_role
+        on user.id = user_role.user_id left out join ROLE role on role.id = user_role.role_id
+    </select>-->
+
+
+</mapper>

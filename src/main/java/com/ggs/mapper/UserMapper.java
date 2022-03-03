@@ -1,10 +1,12 @@
 package com.ggs.mapper;
 
 import com.ggs.model.User;
+import com.ggs.sql.builder.UserSqlBuilder;
 
 import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.ResultMap;
 import org.apache.ibatis.annotations.Select;
+import org.apache.ibatis.annotations.SelectProvider;
 
 import io.quarkiverse.mybatis.runtime.meta.MapperDataSource;
 
@@ -20,4 +22,7 @@ public interface UserMapper {
     @ResultMap("UserResultMap")
     List<User> findAllUsers();
 
+    @SelectProvider(type = UserSqlBuilder.class, method = "buildGetAllUsers")
+    @ResultMap("UserResultMap")
+    List<User> findAllUsersUsingBuilder();
 }

@@ -22,4 +22,12 @@ public class UserResource {
     public List<User> getUsers() {
         return userMapper.findAllUsers();
     }
+
+
+    @GET
+    @Produces(MediaType.APPLICATION_JSON)
+    @Path("/builder")
+    public List<User> getUsersUsingSqlBuilder() {
+        return userMapper.findAllUsersUsingBuilder();
+    }
 }
